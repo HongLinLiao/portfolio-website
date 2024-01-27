@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const maps: { name: string; path: string }[] = [
+const maps: { name: string; path: string }[] = [
   { name: "Home", path: "/home" },
 ];
 
