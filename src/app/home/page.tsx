@@ -1,3 +1,9 @@
+import My from "@/components/my";
+
 export default function Home() {
-  return <>Home page</>;
+  return (
+    <div className="my-20">
+      <My />
+    </div>
+  );
 }

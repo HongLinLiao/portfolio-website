@@ -6,8 +6,13 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mulish: ["var(--font-mulish)"],
+      },
+    },
     screens: {
       sm: "640px",
       md: "768px",

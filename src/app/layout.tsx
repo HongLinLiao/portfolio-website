@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Mulish, Lora } from "next/font/google";
 import "./globals.css";
+import SystemProvider from "@/components/provider/SystemProvider";
 
-// const inter = Inter({ subsets: ["latin"] });
+const mulish = Mulish({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mulish",
+});
 
 export const metadata: Metadata = {
   title: "Leo Liao | Portfolio Website",
@@ -15,9 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      {/* <body className={inter.className}>{children}</body> */}
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${mulish.className}  font-sans`}>
+        <SystemProvider>{children}</SystemProvider>
+      </body>
     </html>
   );
 }
