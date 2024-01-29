@@ -1,8 +1,8 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import SvgIcon from "..";
+import SvgIcon from ".";
 
-describe("SvgIcon component", () => {
+describe("#SvgIcon", () => {
   const mockOnClick = jest.fn();
 
   const renderComponent = (props = {}) => {
