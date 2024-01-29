@@ -8,7 +8,7 @@ interface Props {
 }
 
 const SystemProvider: FC<Props> = ({ children }) => {
-  return <ThemeProvider>{children}</ThemeProvider>;
+  return <ThemeProvider attribute="class">{children}</ThemeProvider>;
 };
 
 export default SystemProvider;
