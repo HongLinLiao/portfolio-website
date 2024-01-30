@@ -12,7 +12,7 @@ export interface Article {
   summary: string;
 }
 
-const articlePath = path.join(process.cwd(), "articles");
+const articlePath = path.join(process.cwd(), "public", "articles");
 
 export async function getArticleData(id: string): Promise<Article> {
   const fullPath = path.join(articlePath, `${id}.md`);
