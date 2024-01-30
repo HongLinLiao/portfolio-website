@@ -39,7 +39,7 @@ export default function System() {
           <input
             type="text"
             className="ml-4 text-center rounded-md border border-solid border-gray-500"
-            placeholder="Enter ID"
+            placeholder="Press Enter"
             value={articleId}
             onChange={(e) => setArticleId(e.target.value)}
             onKeyDown={handleKeyDown}

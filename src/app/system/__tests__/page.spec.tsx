@@ -44,7 +44,7 @@ describe("#System", () => {
 
     const { getByPlaceholderText } = render(<System />);
 
-    const input = getByPlaceholderText("Enter ID");
+    const input = getByPlaceholderText("Press Enter");
     await userEvent.type(input, "123{Enter}");
 
     expect(push).toHaveBeenCalledWith("/articles/123");

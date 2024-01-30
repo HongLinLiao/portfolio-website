@@ -1,7 +1,16 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import React, { ReactNode } from "react";
+import { render } from "@testing-library/react";
 import { getArticleData } from "@/utils/article";
 import Article from "../page";
+
+jest.mock("next/head", () => {
+  return {
+    __esModule: true,
+    default: ({ children }: { children: ReactNode }) => {
+      return <>{children}</>;
+    },
+  };
+});
 
 jest.mock("@/utils/article", () => ({
   getArticleData: jest.fn(),
@@ -11,6 +20,18 @@ jest.mock("@/components/general/date/MonthDate", () => ({
   __esModule: true,
   default: () => <div>Mocked MonthDate</div>,
 }));
+
+jest.mock("@/components/general/shadowDom", () => {
+  return {
+    __esModule: true,
+    default: ({ innerHTML }: { innerHTML: string }) => (
+      <div
+        dangerouslySetInnerHTML={{ __html: innerHTML }}
+        data-testid="shadow-dom"
+      ></div>
+    ),
+  };
+});
 
 describe("#Article", () => {
   it("should render article content", async () => {
@@ -25,15 +46,16 @@ describe("#Article", () => {
 
     const Component = await Article({ params: { id: "test-article" } });
 
-    const { findByText, getByText } = render(Component);
+    const { getByTestId, findByText, findByRole, getByText } =
+      render(Component);
 
-    expect(await findByText("Test Article")).toBeInTheDocument();
     expect(
-      await findByText("This is a summary of the test article.")
+      await findByRole("heading", { name: mockArticleData.title })
     ).toBeInTheDocument();
+    expect(await findByText(mockArticleData.summary)).toBeInTheDocument();
     expect(getByText("Mocked MonthDate")).toBeInTheDocument();
-    expect(
-      getByText("This is the content of the test article.")
-    ).toBeInTheDocument();
+    expect(getByTestId("shadow-dom")).toContainHTML(
+      mockArticleData.contentHtml
+    );
   });
 });
