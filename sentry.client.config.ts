@@ -29,4 +29,5 @@ Sentry.init({
   ],
 
   environment: process.env.ENV,
+  enabled: process.env.ENV !== undefined && process.env.ENV !== "local",
 });
