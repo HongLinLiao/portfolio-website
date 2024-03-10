@@ -7,7 +7,7 @@ export default function HomeLayout({
 }) {
   return (
     <main>
-      <MainLayout isMobileFullScreen={false}>{children}</MainLayout>
+      <MainLayout>{children}</MainLayout>
     </main>
   );
 }

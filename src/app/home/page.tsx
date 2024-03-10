@@ -1,9 +1,11 @@
+import ArticleBoard from "@/components/article/ArticleBoard";
 import My from "@/components/my";
 
 export default function Home() {
   return (
-    <div className="my-20">
-      <My />
-    </div>
+    <>
+      <My className="mt-20" />
+      <ArticleBoard className="mt-5 md:mt-10" />
+    </>
   );
 }
