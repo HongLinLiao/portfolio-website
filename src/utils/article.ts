@@ -10,14 +10,15 @@ export interface Article {
   date: string;
   contentHtml: string;
   summary: string;
+  banner?: string;
 }
 
-const articlePath = path.join(process.cwd(), "public", "articles");
+const markdownFile = "article.md";
+const articleFolderPath = path.join(process.cwd(), "public", "articles");
 
 export async function getArticleData(id: string): Promise<Article> {
-  const fullPath = path.join(articlePath, `${id}.md`);
+  const fullPath = path.join(articleFolderPath, id, markdownFile);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
@@ -30,28 +31,30 @@ export async function getArticleData(id: string): Promise<Article> {
     title: matterResult.data.title,
     date: matterResult.data.date,
     summary: matterResult.data.summary,
+    banner: matterResult.data.banner,
     contentHtml,
     ...matterResult.data,
   };
 }
 
 export function getSortedArticle(): Article[] {
-  const fileNames = fs.readdirSync(articlePath);
-  const allArticleData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
-    const fullPath = path.join(articlePath, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+  const folderList = fs.readdirSync(articleFolderPath);
 
-    const matterResult = matter(fileContents);
+  const articleList = folderList.map((id) => {
+    const articlePath = path.join(articleFolderPath, id, markdownFile);
+    const fileContent = fs.readFileSync(articlePath, "utf8");
+    const matterResult = matter(fileContent);
 
     return {
       id,
       title: matterResult.data.title,
       date: matterResult.data.date,
       summary: matterResult.data.summary,
+      banner: matterResult.data.banner,
     } as Article;
   });
-  return allArticleData.sort((a, b) => {
+
+  return articleList.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {

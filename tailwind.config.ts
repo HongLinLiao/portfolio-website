@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        mulish: ["var(--font-mulish)"],
+        main: ["var(--font-mulish)"],
       },
     },
     screens: {

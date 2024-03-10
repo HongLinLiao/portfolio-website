@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { Mulish, Lora } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import SystemProvider from "@/components/provider/SystemProvider";
+import { Metadata } from "next";
 
-const mulish = Mulish({
-  subsets: ["latin"],
+const mulish = localFont({
+  src: "../../public/fonts/Mulish/regular.ttf",
   display: "swap",
   variable: "--font-mulish",
 });
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${mulish.className}  font-sans`}>
+    <html lang="en" suppressHydrationWarning className={`${mulish.variable}`}>
+      <body className="font-main">
         <SystemProvider>{children}</SystemProvider>
       </body>
     </html>

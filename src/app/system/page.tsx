@@ -1,7 +1,7 @@
 "use client";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useEffect, useState, KeyboardEvent } from "react";
+import { useState, KeyboardEvent } from "react";
 import { useRouter } from "next/navigation";
 
 const maps: { name: string; path: string }[] = [
@@ -11,10 +11,10 @@ const maps: { name: string; path: string }[] = [
 export default function System() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const [articleId, setArticleId] = useState<string>("");
+  const [articleId, setArticleId] = useState<string>();
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && articleId) {
       router.push(`/articles/${articleId}`);
     }
   };
