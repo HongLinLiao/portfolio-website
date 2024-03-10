@@ -8,9 +8,23 @@ jest.mock("@/components/my", () => {
   };
 });
 
+jest.mock("@/components/article/ArticleBoard", () => {
+  return {
+    __esModule: true,
+    default: () => (
+      <div data-testid="article-board">Article Board Component</div>
+    ),
+  };
+});
+
 describe("#Home", () => {
   it("should render my component", () => {
     const { getByTestId } = render(<Home />);
     expect(getByTestId("my-component")).toBeInTheDocument();
+  });
+
+  it("should render article board component", () => {
+    const { getByTestId } = render(<Home />);
+    expect(getByTestId("article-board")).toBeInTheDocument();
   });
 });
