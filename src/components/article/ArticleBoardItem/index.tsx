@@ -43,7 +43,7 @@ const ArticleBoardItem: FC<Props> = ({
           {!imgLoaded && <Spinner />}
         </div>
         <Image
-          src={banner || getDefaultImage(id)}
+          src={banner ?? getDefaultImage(id)}
           alt={title}
           onLoad={() => setImgLoaded(true)}
           loading="lazy"

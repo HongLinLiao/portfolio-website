@@ -6,8 +6,8 @@ interface Props {
   className?: string;
 }
 
-const ArticleBoard = async ({ className }: Props) => {
-  const articles = await getSortedArticle();
+const ArticleBoard = ({ className }: Props) => {
+  const articles = getSortedArticle();
 
   return (
     <div

@@ -2,7 +2,7 @@ import { render, waitFor } from "@testing-library/react";
 import ArticleBoard from ".";
 
 jest.mock("@/utils/article", () => ({
-  getSortedArticle: jest.fn().mockResolvedValue([
+  getSortedArticle: jest.fn().mockReturnValue([
     {
       id: "1",
       title: "Test Article 1",
@@ -21,9 +21,8 @@ jest.mock("@/utils/article", () => ({
 }));
 
 describe("#ArticleBoard", () => {
-  test("renders ArticleBoardItem for each article", async () => {
-    const Component = await ArticleBoard({});
-    const { getAllByRole, getByAltText } = render(Component);
+  it("should render ArticleBoardItem for each article", async () => {
+    const { getAllByRole, getByAltText } = render(<ArticleBoard />);
     await waitFor(() => {
       expect(getAllByRole("link").length).toBe(2);
       expect(getByAltText("Test Article 1")).toBeInTheDocument();
