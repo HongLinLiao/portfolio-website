@@ -8,6 +8,6 @@ describe("#My", () => {
     const { getByRole } = render(<My />);
     const headerElement = getByRole("heading", { name: /leo liao/i });
     expect(headerElement).toBeInTheDocument();
-    expect(headerElement).toHaveClass("text-5xl font-bold");
+    expect(headerElement).toHaveClass("text-3xl sm:text-5xl font-bold");
   });
 });

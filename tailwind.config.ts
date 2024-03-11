@@ -12,6 +12,15 @@ const config: Config = {
       fontFamily: {
         main: ["var(--font-mulish)"],
       },
+      keyframes: {
+        opacity: {
+          "0%": { opacity: "0.5" },
+          "100%": { opacity: "1" },
+        },
+      },
+      animation: {
+        opacity: "opacity 500ms ease-in-out",
+      },
     },
     screens: {
       sm: "640px",
