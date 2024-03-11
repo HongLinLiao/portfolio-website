@@ -2,10 +2,9 @@ import { FC } from "react";
 import Link from "next/link";
 
 import SvgIcon from "../general/image/SvgIcon";
-import Github from "../svg/Github";
-import Instagram from "../svg/Instagram";
-import Linkedin from "../svg/Linkedin";
+
 import clsx from "clsx";
+import { Github, Instagram, Linkedin } from "../svg";
 
 interface Props {
   className?: string;
@@ -20,7 +19,7 @@ const My: FC<Props> = ({ className }) => {
 
   return (
     <div className={className}>
-      <h1 className="text-5xl font-bold">Leo Liao</h1>
+      <h1 className="text-3xl sm:text-5xl font-bold">Leo Liao</h1>
       <div className="my-4 flex gap-4">
         <Link href="https://github.com/HongLinLiao" target="_blank">
           <SvgIcon
