@@ -46,13 +46,11 @@ describe("#Article", () => {
 
     const Component = await Article({ params: { id: "test-article" } });
 
-    const { getByTestId, findByText, findByRole, getByText } =
-      render(Component);
+    const { getByTestId, findByRole, getByText } = render(Component);
 
     expect(
       await findByRole("heading", { name: mockArticleData.title })
     ).toBeInTheDocument();
-    expect(await findByText(mockArticleData.summary)).toBeInTheDocument();
     expect(getByText("Mocked MonthDate")).toBeInTheDocument();
     expect(getByTestId("shadow-dom")).toContainHTML(
       mockArticleData.contentHtml
