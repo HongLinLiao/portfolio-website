@@ -8,10 +8,11 @@ import { Github, Instagram, Linkedin } from "../svg";
 
 interface Props {
   className?: string;
+  showTitle?: boolean;
 }
 
-const My: FC<Props> = ({ className }) => {
-  const svgStyle = `w-[30px] h-[30px] text-gray-800 dark:text-white`;
+const My: FC<Props> = ({ showTitle = true, className }) => {
+  const svgStyle = `w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] text-gray-800 dark:text-white`;
   const svgHoverStyle = clsx(
     `transition-all`,
     `hover:scale-[1.2] hover:text-gray-500 hover:dark:text-gray-400`
@@ -19,15 +20,25 @@ const My: FC<Props> = ({ className }) => {
 
   return (
     <div className={className}>
-      <h1 className="text-3xl sm:text-5xl font-bold">Leo Liao</h1>
-      <div className="my-4 flex gap-4">
-        <Link href="https://github.com/HongLinLiao" target="_blank">
+      {showTitle && (
+        <h1 className="mb-4 text-3xl sm:text-5xl font-bold">Leo Liao</h1>
+      )}
+      <div className="flex gap-4">
+        <Link
+          href="https://github.com/HongLinLiao"
+          className="flex justify-center"
+          target="_blank"
+        >
           <SvgIcon
             icon={<Github />}
             className={`${svgStyle} ${svgHoverStyle}`}
           />
         </Link>
-        <Link href="https://www.instagram.com/leo__liaoo/" target="_blank">
+        <Link
+          href="https://www.instagram.com/leo__liaoo/"
+          className="flex justify-center"
+          target="_blank"
+        >
           <SvgIcon
             icon={<Instagram />}
             className={`${svgStyle} ${svgHoverStyle}`}
@@ -35,6 +46,7 @@ const My: FC<Props> = ({ className }) => {
         </Link>
         <Link
           href="https://www.linkedin.com/in/leo-liao-aa2b96187/"
+          className="flex justify-center"
           target="_blank"
         >
           <SvgIcon

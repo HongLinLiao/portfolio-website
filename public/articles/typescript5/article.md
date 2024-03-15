@@ -5,8 +5,6 @@ summary: 'Typescript 5.0 Introduction'
 banner: '/articles/typescript5/banner.jpg'
 ---
 
-# Typescript 5.0
-
 > 在vscode，記得要`shift+cmd+P` > `Select Typescript version` > 換成workspace的typescript版本，不然你還是會看到一大堆type error唷!
 > 
 
