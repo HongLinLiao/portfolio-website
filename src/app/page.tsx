@@ -42,7 +42,7 @@ export default function App() {
         </div>
         <div className="flex flex-col items-center gap-5">
           <div>
-            <My className="flex flex-col items-center gap-1" />
+            <My className="mb-4 flex flex-col items-center gap-1" />
             <p className="text-sm font-thin text-center">
               Frontend Engineer@LINE Taiwan
               <br />
